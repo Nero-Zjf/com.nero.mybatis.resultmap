@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nero.mybatis.resultmap.mapper.UserMapper">
+    <resultMap id="userMap" type="com.nero.mybatis.resultmap.domain.User">
+        <!-- property 是 com.pojo.MapUser 类中的属性-->
+        <!-- column是查询结果的列名，可以来自不同的表-->
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="sex" column="sex"/>
+    </resultMap>
+    <!-- 查询所有用户信息 Map方式-->
+    <select id="getAllUser" resultType="map">
+        select * from user
+    </select>
+    <!-- 查询所有用户信息 resultMap方式-->
+    <select id="getAllUser2" resultMap="userMap">
+        select * from user
+    </select>
+
+    <!-- 查询所有用户信息 自动映射方式-->
+    <select id="getAllUser3" resultType="com.nero.mybatis.resultmap.domain.User">
+        select * from user
+    </select>
+</mapper>
